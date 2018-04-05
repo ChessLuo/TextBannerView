@@ -6,7 +6,7 @@
 
 
 ## 效果图
-![](./textbanner.gif)
+![](./someImg/textbanner.gif)
 
 [Download Apk](https://github.com/zsml2016/TextBannerView/blob/master/demo-1.0.1.apk)
 
