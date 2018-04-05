@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context="com.zsml.textbannerview.MainActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="自动水平滚动--从右到左轮播"
+        android:textSize="16sp"/>
+    <com.superluo.textbannerlibrary.TextBannerView
+        android:id="@+id/tv_banner"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:background="#cc8ac6"
+        app:setGravity="right"
+        app:setTextColor="#fff"/>
+
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="自动水平滚动--从左到右轮播"
+        android:textSize="16sp"/>
+    <com.superluo.textbannerlibrary.TextBannerView
+        android:id="@+id/tv_banner1"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:background="#cc8ac6"
+        app:setDirection="left_to_right"/>
+
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="自动垂直滚动--从下到上轮播"
+        android:textSize="16sp"/>
+    <com.superluo.textbannerlibrary.TextBannerView
+        android:id="@+id/tv_banner2"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:background="#cc8ac6"
+        app:setDirection="bottom_to_top"
+        app:setGravity="center"
+        app:setTextColor="#fff"/>
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="自动垂直滚动--从上到下轮播"
+        android:textSize="16sp"/>
+    <com.superluo.textbannerlibrary.TextBannerView
+        android:id="@+id/tv_banner3"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:background="#cc8ac6"
+        app:setDirection="top_to_bottom"
+        app:setGravity="center"/>
+
+</LinearLayout>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TextBannerViewStyle">
+        <attr name="setInterval" format="integer|reference"/>
+        <attr name="setAnimDuration" format="integer|reference"/>
+        <attr name="setTextSize" format="dimension|reference"/>
+        <attr name="setTextColor" format="color|reference"/>
+        <attr name="setSingleLine" format="boolean"/>
+        <attr name="setGravity">
+            <enum name="left" value="0"/>
+            <enum name="center" value="1"/>
+            <enum name="right" value="2"/>
+        </attr>
+        <attr name="setDirection">
+            <enum name="bottom_to_top" value="0"/>
+            <enum name="top_to_bottom" value="1"/>
+            <enum name="right_to_left" value="2"/>
+            <enum name="left_to_right" value="3"/>
+        </attr>
+    </declare-styleable>
+</resources>
