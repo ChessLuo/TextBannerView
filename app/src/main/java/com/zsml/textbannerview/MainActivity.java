@@ -1,7 +1,7 @@
 package com.zsml.textbannerview;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
 import com.superluo.textbannerlibrary.ITextBannerItemClickListener;
@@ -10,7 +10,9 @@ import com.superluo.textbannerlibrary.TextBannerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
+
+    private Toolbar mToolbar;
 
     private TextBannerView mTvBanner;
     private TextBannerView mTvBanner1;
@@ -30,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void initView() {
         setContentView(R.layout.activity_main);
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+
+
         mTvBanner = (TextBannerView) findViewById(R.id.tv_banner);
         mTvBanner1 = (TextBannerView) findViewById(R.id.tv_banner1);
         mTvBanner2 = (TextBannerView) findViewById(R.id.tv_banner2);
@@ -37,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initData() {
+        initToolBar(mToolbar, false, "");
+
         mList = new ArrayList<>();
         mList.add("学好Java、Android、C#、C、ios、html+css+js");
         mList.add("走遍天下都不怕！！！！！");

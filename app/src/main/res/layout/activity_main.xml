@@ -1,69 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="10dp"
-    tools:context="com.zsml.textbannerview.MainActivity">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="自动水平滚动--从右到左轮播"
-        android:textSize="16sp"/>
-    <com.superluo.textbannerlibrary.TextBannerView
-        android:id="@+id/tv_banner"
+    android:fitsSystemWindows="true">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
         android:layout_width="match_parent"
-        android:layout_height="38dp"
-        android:background="#cc8ac6"
-        app:setGravity="right"
-        app:setTextColor="#fff"/>
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        app:theme="@style/AppTheme.AppBarOverlay">
 
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:contentScrim="#e28213"
+            app:expandedTitleMarginStart="100dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            app:statusBarScrim="@android:color/transparent"
+            app:titleEnabled="false">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/fj"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0.6"/>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                app:title=""/>
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+        <LinearLayout
+            android:id="@+id/activity_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="自动水平滚动--从右到左轮播"
+                android:textSize="16sp"/>
+            <com.superluo.textbannerlibrary.TextBannerView
+                android:id="@+id/tv_banner"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:background="#cc8ac6"
+                app:setGravity="right"
+                app:setTextColor="#fff"/>
+
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="自动水平滚动--从左到右轮播"
+                android:textSize="16sp"/>
+            <com.superluo.textbannerlibrary.TextBannerView
+                android:id="@+id/tv_banner1"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:background="#cc8ac6"
+                app:setDirection="left_to_right"/>
+
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="自动垂直滚动--从下到上轮播"
+                android:textSize="16sp"/>
+            <com.superluo.textbannerlibrary.TextBannerView
+                android:id="@+id/tv_banner2"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:background="#cc8ac6"
+                app:setDirection="bottom_to_top"
+                app:setGravity="center"
+                app:setTextColor="#fff"/>
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="自动垂直滚动--从上到下轮播"
+                android:textSize="16sp"/>
+            <com.superluo.textbannerlibrary.TextBannerView
+                android:id="@+id/tv_banner3"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:background="#cc8ac6"
+                app:setDirection="top_to_bottom"
+                app:setGravity="center"/>
+
+        </LinearLayout>
+
+    </android.support.design.widget.AppBarLayout>
 
     <TextView
-        android:layout_marginTop="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="自动水平滚动--从左到右轮播"
-        android:textSize="16sp"/>
-    <com.superluo.textbannerlibrary.TextBannerView
-        android:id="@+id/tv_banner1"
+        android:id="@+id/toolbar_title"
         android:layout_width="match_parent"
-        android:layout_height="38dp"
-        android:background="#cc8ac6"
-        app:setDirection="left_to_right"/>
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="-100dp"
+        android:alpha="0"
+        android:elevation="10dp"
+        android:gravity="center_vertical"
+        android:text="TextBannerView文字自动轮播"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_behavior="com.zsml.textbannerview.SimpleViewBehavior"
+        app:svb_dependOn="@id/appbar"
+        app:svb_dependType="y"
+        app:svb_targetAlpha="1"
+        app:svb_targetY="0dp"/>
 
 
-    <TextView
-        android:layout_marginTop="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="自动垂直滚动--从下到上轮播"
-        android:textSize="16sp"/>
-    <com.superluo.textbannerlibrary.TextBannerView
-        android:id="@+id/tv_banner2"
-        android:layout_width="match_parent"
-        android:layout_height="38dp"
-        android:background="#cc8ac6"
-        app:setDirection="bottom_to_top"
-        app:setGravity="center"
-        app:setTextColor="#fff"/>
+</android.support.design.widget.CoordinatorLayout>
 
-    <TextView
-        android:layout_marginTop="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="自动垂直滚动--从上到下轮播"
-        android:textSize="16sp"/>
-    <com.superluo.textbannerlibrary.TextBannerView
-        android:id="@+id/tv_banner3"
-        android:layout_width="match_parent"
-        android:layout_height="38dp"
-        android:background="#cc8ac6"
-        app:setDirection="top_to_bottom"
-        app:setGravity="center"/>
-
-</LinearLayout>
