@@ -1,7 +1,9 @@
 package com.zsml.textbannerview;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.widget.Toast;
 
 import com.superluo.textbannerlibrary.ITextBannerItemClickListener;
@@ -18,6 +20,7 @@ public class MainActivity extends BaseActivity {
     private TextBannerView mTvBanner1;
     private TextBannerView mTvBanner2;
     private TextBannerView mTvBanner3;
+    private TextBannerView mTvBanner4;
     private List<String> mList;
 
     @Override
@@ -39,6 +42,7 @@ public class MainActivity extends BaseActivity {
         mTvBanner1 = (TextBannerView) findViewById(R.id.tv_banner1);
         mTvBanner2 = (TextBannerView) findViewById(R.id.tv_banner2);
         mTvBanner3 = (TextBannerView) findViewById(R.id.tv_banner3);
+        mTvBanner4 = (TextBannerView) findViewById(R.id.tv_banner4);
     }
 
     private void initData() {
@@ -54,6 +58,10 @@ public class MainActivity extends BaseActivity {
         mTvBanner1.setDatas(mList);
         mTvBanner2.setDatas(mList);
         mTvBanner3.setDatas(mList);
+
+        Drawable drawable = getResources().getDrawable(R.mipmap.ic_launcher);
+        //设置带图标的数据；第一个参数：数据 。第二参数：drawable.  第三参数drawable尺寸。第四参数图标位置
+        mTvBanner4.setDatasWithDrawableIcon(mList,drawable,18, Gravity.LEFT);
 
     }
 

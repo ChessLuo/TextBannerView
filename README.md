@@ -26,10 +26,12 @@
 ## <a name="2"></a>方法
 |方法名|描述|版本限制
 |---|---|---|
-|setDatas(List<String> datas)| 设置数据集合，类型：List<String>|无
+|setDatas(List<String> datas)| 设置数据，类型：List<String>|无
 |startViewAnimator()| 设置开始文字切换（默认自动）|无
 |stopViewAnimator()| 设置暂停文字切换|无
-|setItemOnClickListener(listener))| 设置点击监听事件回调 |无
+|setItemOnClickListener(listener)| 设置点击监听事件回调 |无
+|setDatasWithDrawableIcon()| 设置带图标的数据；第一个参数：数据 。第二参数：drawable.  第三参数drawable尺寸。第四参数图标位置(仅支持Gravity.LEFT、Gravity.TOP、Gravity.RIGHT、Gravity.BOTTOM) |1.0.2开始
+
 
 
 ## 使用步骤
@@ -38,7 +40,7 @@
 Gradle 
 ```groovy
 dependencies{
-    compile 'com.superluo:textbannerview:1.0.1'  //最新版本
+    compile 'com.superluo:textbannerview:1.0.2'  //最新版本
 }
 ```
 或者引用本地lib
@@ -51,7 +53,7 @@ Maven
 <dependency>
   <groupId>com.superluo</groupId>
   <artifactId>textbannerview</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
   <type>pom</type>
 </dependency>
 ```
@@ -91,6 +93,17 @@ list.add("你是最棒的，奔跑吧孩子！");
 //注意：此方法目前只接受List<String>类型
 tvBanner.setDatas(mList);
 
+
+Drawable drawable = getResources().getDrawable(R.mipmap.ic_launcher);
+/**这里可以设置带图标的数据（1.0.2新方法），比setDatas方法多了带图标参数；
+第一个参数：数据 。
+第二参数：drawable. 
+第三参数:drawable尺寸。
+第四参数:图标位置仅支持Gravity.LEFT、Gravity.TOP、Gravity.RIGHT、Gravity.BOTTOM
+*/
+mTvBanner.setDatasWithDrawableIcon(mList,drawable,18, Gravity.LEFT);
+        
+
 //设置TextBannerView点击监听事件，返回点击的data数据, 和position位置
 tvBanner.setItemOnClickListener(new ITextBannerItemClickListener() {
             @Override
@@ -102,6 +115,18 @@ tvBanner.setItemOnClickListener(new ITextBannerItemClickListener() {
 
 ```
 * <a href="#2">点击可参考更多使用方法</a>
+
+## 版本历史：
+### v1.0.2
+* 实现文字带drawable图标一起轮播；
+* drawable图标可设置在文本的左上右下 共4个方向；
+* 修复若干bug.
+
+### v1.0.1
+* 实现可垂直可水平的跑马灯文字轮播；支持设置切换时间设置、动画过度时间设置、文字颜色大小、文字轮播方向等。
+
+
+
 
 
 ## 更多开源库请关注：[GitHub](https://github.com/zsml2016)

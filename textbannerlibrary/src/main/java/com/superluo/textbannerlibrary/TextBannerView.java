@@ -2,13 +2,16 @@ package com.superluo.textbannerlibrary;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.AnimRes;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
@@ -52,6 +55,7 @@ public class TextBannerView extends RelativeLayout {
     private List<String> mDatas;
     private ITextBannerItemClickListener mListener;
     private boolean isStarted;
+    private boolean isDetachedFromWindow;
 
 
     public TextBannerView(Context context) {
@@ -122,7 +126,9 @@ public class TextBannerView extends RelativeLayout {
             @Override
             public void onClick(View v) {
                 int position = mViewFlipper.getDisplayedChild();//当前显示的子视图的索引位置
-                mListener.onItemClick(mDatas.get(position),position);
+                if (mListener!=null){
+                    mListener.onItemClick(mDatas.get(position),position);
+                }
             }
         });
 
@@ -139,8 +145,10 @@ public class TextBannerView extends RelativeLayout {
     /**开始动画*/
     public void startViewAnimator(){
         if (!isStarted){
-            isStarted = true;
-            postDelayed(mRunnable,mInterval);
+            if (!isDetachedFromWindow){
+                isStarted = true;
+                postDelayed(mRunnable,mInterval);
+            }
         }
     }
 
@@ -201,6 +209,54 @@ public class TextBannerView extends RelativeLayout {
 
     }
 
+    /**
+     * 设置数据集合伴随drawable-icon
+     * @param datas 数据
+     * @param drawable 图标
+     * @param size 图标尺寸
+     * @param direction 图标位于文字方位
+     */
+    public void setDatasWithDrawableIcon(List<String> datas, Drawable drawable,int size, int direction){
+        this.mDatas = datas;
+        if (DisplayUtils.isEmpty(mDatas)){
+            return;
+        }
+        for (int i = 0; i < mDatas.size(); i++) {
+            TextView textView = new TextView(getContext());
+            textView.setText(mDatas.get(i));
+            //任意设置你的文字样式，在这里
+            textView.setSingleLine(isSingleLine);
+            textView.setEllipsize(TextUtils.TruncateAt.END);
+            textView.setTextColor(mTextColor);
+            textView.setTextSize(mTextSize);
+            textView.setGravity(mGravity);
+
+            textView.setCompoundDrawablePadding(8);
+            float scale = getResources().getDisplayMetrics().density;// 屏幕密度 ;
+            int muchDp = (int) (size * scale + 0.5f);
+            drawable.setBounds(0, 0, muchDp, muchDp);
+            if (direction==Gravity.LEFT){
+                textView.setCompoundDrawables(drawable,null,null , null);//左边
+            }else if (direction==Gravity.TOP){
+                textView.setCompoundDrawables(null,drawable,null , null);//顶部
+            }else if (direction==Gravity.RIGHT){
+                textView.setCompoundDrawables(null,null, drawable, null);//右边
+            }else if (direction==Gravity.BOTTOM){
+                textView.setCompoundDrawables(null,null, null, drawable);//底部
+            }
+
+
+            LinearLayout linearLayout = new LinearLayout(getContext());
+            linearLayout.setOrientation(LinearLayout.HORIZONTAL);//水平方向
+            linearLayout.setGravity(Gravity.CENTER);//子view居中
+            LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(LinearLayout.
+                    LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+            linearLayout.addView(textView,param);
+
+            mViewFlipper.addView(linearLayout,i);//添加子view,并标识子view位置
+        }
+    }
+
 
     /**设置点击监听事件回调*/
     public void setItemOnClickListener(ITextBannerItemClickListener listener){
@@ -211,12 +267,14 @@ public class TextBannerView extends RelativeLayout {
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
+        isDetachedFromWindow=true;
         stopViewAnimator();
     }
 
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
+        isDetachedFromWindow=false;
         startViewAnimator();
 
     }

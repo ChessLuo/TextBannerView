@@ -35,9 +35,9 @@ publish {
     repoName = 'superProject2'
     groupId = 'com.superluo'
     artifactId = 'textbannerview'
-    publishVersion = '1.0.1'
+    publishVersion = '1.0.2'
     desc = 'this is a nice TextBannerView description for a project'
     website = 'https://github.com/zsml2016/TextBannerView'
-//compile 'com.superluo:textbannerview:1.0.1'
+//compile 'com.superluo:textbannerview:1.0.2'
 }
 
