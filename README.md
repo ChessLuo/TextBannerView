@@ -8,7 +8,7 @@
 ## 效果图
 ![](./someImg/textbanner.gif)
 
-[Download Apk](https://github.com/zsml2016/TextBannerView/releases/download/1.0.1/demo-1.0.1.apk)
+[Download Apk](https://github.com/zsml2016/TextBannerView/releases/download/1.0.2/demo-1.0.2.apk)
 
 
 ## <a name="1"></a>Attributes属性（TextBannerView布局文件中调用）
