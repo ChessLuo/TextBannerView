@@ -2,7 +2,7 @@
 [![Apache 2.0 License](https://img.shields.io/badge/license-Apache%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0.html)
 
 
-现在的绝大数APP特别是类似淘宝京东等这些大型APP都有文字轮播界面，实现循环轮播多个广告词等功能；这种空间俗称“跑马灯”，而TextBannerView已经实现了可垂直跑、可水平跑的跑马灯了。
+现在的绝大数APP特别是类似淘宝京东等这些大型APP都有文字轮播界面，实现循环轮播多个广告词等功能；这种控件俗称“跑马灯”，而TextBannerView已经实现了可垂直跑、可水平跑的跑马灯了。
 
 
 ## 效果图
@@ -40,7 +40,7 @@
 Gradle 
 ```groovy
 dependencies{
-    compile 'com.superluo:textbannerview:1.0.2'  //最新版本
+    compile 'com.superluo:textbannerview:1.0.3'  //最新版本
 }
 ```
 或者引用本地lib
@@ -53,7 +53,7 @@ Maven
 <dependency>
   <groupId>com.superluo</groupId>
   <artifactId>textbannerview</artifactId>
-  <version>1.0.2</version>
+  <version>1.0.3</version>
   <type>pom</type>
 </dependency>
 ```
@@ -112,11 +112,33 @@ tvBanner.setItemOnClickListener(new ITextBannerItemClickListener() {
             }
         });
 
+```
+#### Step 4.在Activity或者Fragment中的onResume()和onStop()方法分别调用startViewAnimator()和stopViewAnimator()，防止返回页面出现文字重影问题！
+```java
+
+@override
+protected void onResume() {
+    super.onResume();
+    tvBanner.startViewAnimator();
+}
+
+、、、、、、
+
+@override
+protected void onStop() {
+    super.onStop();
+    tvBanner.stopViewAnimator();
+}
 
 ```
 * <a href="#2">点击可参考更多使用方法</a>
 
 ## 版本历史：
+###  v1.0.3 (2018/7/23)
+* 修复用带图的setDatasWithDrawableIcon方法后，布局文件里设置setGravity=left等位置时不起作用问题；
+* 添加文字重影问题的方法使用说明；
+* 项目工程升级为AndroidStudio3.1.3。
+
 ### v1.0.2
 * 实现文字带drawable图标一起轮播；
 * drawable图标可设置在文本的左上右下 共4个方向；

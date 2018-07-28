@@ -101,8 +101,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
                 android:background="#cc8ac6"
-                app:setDirection="top_to_bottom"
-                app:setGravity="center"/>
+                app:setDirection="top_to_bottom"/>
 
             <TextView
                 android:layout_marginTop="20dp"
@@ -116,7 +115,7 @@
                 android:layout_height="38dp"
                 android:background="#cc8ac6"
                 app:setDirection="left_to_right"
-                app:setGravity="center"
+                app:setGravity="right"
                 app:setTextColor="#fff"/>
         </LinearLayout>
 

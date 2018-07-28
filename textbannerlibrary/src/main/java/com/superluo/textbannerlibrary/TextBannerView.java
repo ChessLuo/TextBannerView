@@ -194,6 +194,7 @@ public class TextBannerView extends RelativeLayout {
     public void setDatas(List<String> datas){
         this.mDatas = datas;
         if (DisplayUtils.notEmpty(mDatas)){
+            mViewFlipper.removeAllViews();
             for (int i = 0; i < mDatas.size(); i++) {
                 TextView textView = new TextView(getContext());
                 textView.setText(mDatas.get(i));
@@ -221,6 +222,7 @@ public class TextBannerView extends RelativeLayout {
         if (DisplayUtils.isEmpty(mDatas)){
             return;
         }
+        mViewFlipper.removeAllViews();
         for (int i = 0; i < mDatas.size(); i++) {
             TextView textView = new TextView(getContext());
             textView.setText(mDatas.get(i));
@@ -248,7 +250,7 @@ public class TextBannerView extends RelativeLayout {
 
             LinearLayout linearLayout = new LinearLayout(getContext());
             linearLayout.setOrientation(LinearLayout.HORIZONTAL);//水平方向
-            linearLayout.setGravity(Gravity.CENTER);//子view居中
+            linearLayout.setGravity(mGravity);//子view显示位置跟随TextView
             LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(LinearLayout.
                     LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
             linearLayout.addView(textView,param);
