@@ -134,7 +134,7 @@ protected void onStop() {
 * <a href="#2">点击可参考更多使用方法</a>
 
 ## 版本历史：
-###  v1.0.3 (2018/7/23)
+###  v1.0.3 (2018/7/28)
 * 修复用带图的setDatasWithDrawableIcon方法后，布局文件里设置setGravity=left等位置时不起作用问题；
 * 添加文字重影问题的方法使用说明；
 * 项目工程升级为AndroidStudio3.1.3。
