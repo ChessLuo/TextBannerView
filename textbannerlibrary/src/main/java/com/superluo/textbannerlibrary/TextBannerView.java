@@ -2,6 +2,8 @@ package com.superluo.textbannerlibrary;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.AnimRes;
 import android.text.TextUtils;
@@ -51,6 +53,14 @@ public class TextBannerView extends RelativeLayout {
     private int outAnimResId = R.anim.anim_left_out;
     private boolean hasSetAnimDuration = false;
     private int animDuration = 1500;/**默认1.5s*/
+    private int mFlags = -1;/**文字划线*/
+    private static final int STRIKE = 0;
+    private static final int UNDER_LINE = 1;
+    private int mTypeface = Typeface.NORMAL;/**设置字体类型：加粗、斜体、斜体加粗*/
+    private static final int TYPE_NORMAL = 0;
+    private static final int TYPE_BOLD = 1;
+    private static final int TYPE_ITALIC = 2;
+    private static final int TYPE_ITALIC_BOLD = 3;
 
     private List<String> mDatas;
     private ITextBannerItemClickListener mListener;
@@ -116,6 +126,33 @@ public class TextBannerView extends RelativeLayout {
             inAnimResId = R.anim.anim_right_in;
             outAnimResId = R.anim.anim_left_out;
         }
+        mFlags = typedArray.getInt(R.styleable.TextBannerViewStyle_setFlags, mFlags);//字体划线
+        switch (mFlags) {
+            case STRIKE:
+                mFlags = Paint.STRIKE_THRU_TEXT_FLAG|Paint.ANTI_ALIAS_FLAG;
+                break;
+            case UNDER_LINE:
+                mFlags = Paint.UNDERLINE_TEXT_FLAG|Paint.ANTI_ALIAS_FLAG;
+                break;
+            default:
+                mFlags = 0;
+                break;
+        }
+        mTypeface = typedArray.getInt(R.styleable.TextBannerViewStyle_setTypeface, mTypeface);//字体样式
+        switch (mTypeface) {
+            case TYPE_BOLD:
+                mTypeface = Typeface.BOLD;
+                break;
+            case TYPE_ITALIC:
+                mTypeface = Typeface.ITALIC;
+                break;
+            case TYPE_ITALIC_BOLD:
+                mTypeface = Typeface.ITALIC|Typeface.BOLD;
+                break;
+            default:
+                break;
+        }
+
 
         mViewFlipper = new ViewFlipper(getContext());//new 一个ViewAnimator
         mViewFlipper.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
@@ -197,12 +234,7 @@ public class TextBannerView extends RelativeLayout {
             mViewFlipper.removeAllViews();
             for (int i = 0; i < mDatas.size(); i++) {
                 TextView textView = new TextView(getContext());
-                textView.setText(mDatas.get(i));
-                //任意设置你的文字样式，在这里
-                textView.setSingleLine(isSingleLine);
-                textView.setTextColor(mTextColor);
-                textView.setTextSize(mTextSize);
-                textView.setGravity(mGravity);
+                setTextView(textView,i);
 
                 mViewFlipper.addView(textView,i);//添加子view,并标识子view位置
             }
@@ -225,13 +257,7 @@ public class TextBannerView extends RelativeLayout {
         mViewFlipper.removeAllViews();
         for (int i = 0; i < mDatas.size(); i++) {
             TextView textView = new TextView(getContext());
-            textView.setText(mDatas.get(i));
-            //任意设置你的文字样式，在这里
-            textView.setSingleLine(isSingleLine);
-            textView.setEllipsize(TextUtils.TruncateAt.END);
-            textView.setTextColor(mTextColor);
-            textView.setTextSize(mTextSize);
-            textView.setGravity(mGravity);
+            setTextView(textView,i);
 
             textView.setCompoundDrawablePadding(8);
             float scale = getResources().getDisplayMetrics().density;// 屏幕密度 ;
@@ -257,6 +283,18 @@ public class TextBannerView extends RelativeLayout {
 
             mViewFlipper.addView(linearLayout,i);//添加子view,并标识子view位置
         }
+    }
+    /**设置TextView*/
+    private void setTextView(TextView textView,int position){
+        textView.setText(mDatas.get(position));
+        //任意设置你的文字样式，在这里
+        textView.setSingleLine(isSingleLine);
+        textView.setEllipsize(TextUtils.TruncateAt.END);
+        textView.setTextColor(mTextColor);
+        textView.setTextSize(mTextSize);
+        textView.setGravity(mGravity);
+        textView.getPaint().setFlags(mFlags);//字体划线
+        textView.setTypeface(null, mTypeface);//字体样式
     }
 
 

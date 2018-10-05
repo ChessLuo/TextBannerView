@@ -27,5 +27,5 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     implementation 'com.android.support:appcompat-v7:26.1.0'
 //    implementation project(':textbannerlibrary')
-    implementation 'com.superluo:textbannerview:1.0.3'
+    implementation 'com.superluo:textbannerview:1.0.4'
 }

@@ -1,21 +1,19 @@
 package com.zsml.textbannerview;
 
+import android.app.Activity;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.widget.Toast;
 
 import com.superluo.textbannerlibrary.ITextBannerItemClickListener;
 import com.superluo.textbannerlibrary.TextBannerView;
+import com.zsml.textbannerview.utils.StatusBarUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends BaseActivity {
-
-    private Toolbar mToolbar;
-
+public class MainActivity extends Activity {
     private TextBannerView mTvBanner;
     private TextBannerView mTvBanner1;
     private TextBannerView mTvBanner2;
@@ -26,6 +24,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        StatusBarUtil.immersive(this);
         initView();
         initData();
         setListener();
@@ -35,19 +34,15 @@ public class MainActivity extends BaseActivity {
 
     private void initView() {
         setContentView(R.layout.activity_main);
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
-
-        mTvBanner = (TextBannerView) findViewById(R.id.tv_banner);
-        mTvBanner1 = (TextBannerView) findViewById(R.id.tv_banner1);
-        mTvBanner2 = (TextBannerView) findViewById(R.id.tv_banner2);
-        mTvBanner3 = (TextBannerView) findViewById(R.id.tv_banner3);
-        mTvBanner4 = (TextBannerView) findViewById(R.id.tv_banner4);
+        mTvBanner = findViewById(R.id.tv_banner);
+        mTvBanner1 = findViewById(R.id.tv_banner1);
+        mTvBanner2 = findViewById(R.id.tv_banner2);
+        mTvBanner3 = findViewById(R.id.tv_banner3);
+        mTvBanner4 = findViewById(R.id.tv_banner4);
     }
 
     private void initData() {
-        initToolBar(mToolbar, false, "");
-
         mList = new ArrayList<>();
         mList.add("学好Java、Android、C#、C、ios、html+css+js");
         mList.add("走遍天下都不怕！！！！！");

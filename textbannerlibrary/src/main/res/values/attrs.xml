@@ -6,6 +6,11 @@
         <attr name="setTextSize" format="dimension|reference"/>
         <attr name="setTextColor" format="color|reference"/>
         <attr name="setSingleLine" format="boolean"/>
+
+        <attr name="setFlags">
+            <enum name="strike" value="0"/>
+            <enum name="underline" value="1"/>
+        </attr>
         <attr name="setGravity">
             <enum name="left" value="0"/>
             <enum name="center" value="1"/>
@@ -16,6 +21,12 @@
             <enum name="top_to_bottom" value="1"/>
             <enum name="right_to_left" value="2"/>
             <enum name="left_to_right" value="3"/>
+        </attr>
+        <attr name="setTypeface">
+            <enum name="normal" value="0"/>
+            <enum name="bold" value="1"/>
+            <enum name="italic" value="2"/>
+            <enum name="italic_bold" value="3"/>
         </attr>
     </declare-styleable>
 </resources>

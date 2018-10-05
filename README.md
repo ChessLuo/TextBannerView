@@ -12,7 +12,7 @@
 
 
 ## <a name="1"></a>Attributes属性（TextBannerView布局文件中调用）
-|Attributes|forma|describe
+|Attributes|format|describe
 |---|---|---|
 |setInterval| integer |文字切换时间间隔,默认3000
 |setAnimDuration| integer |动画持续时间，默认1500
@@ -21,6 +21,8 @@
 |setSingleLine| boolean|是否为显示单行
 |setGravity| |文字显示位置,默认左边居中；可设置left、center、right
 |setDirection| |文字轮播方向，默认水平从右到左轮播：right_to_left；还可以设置left_to_right（从左到右轮播）、bottom_to_top（从底部到顶部轮播）、top_to_bottom（从顶部到底部轮播）
+|setFlags| |添加文字下划线、中划线。默认没有划线；可设置underline(下划线)、strike(中划线)。支持版本：v1.0.4开始
+|setTypeface| |设置字体样式类型，如加粗、斜体、斜体加粗。默认为普通类型；可设置bold(加粗)、italic(斜体)、italic_bold(斜体加粗)。支持版本：v1.0.4开始
 
 
 ## <a name="2"></a>方法
@@ -40,7 +42,7 @@
 Gradle 
 ```groovy
 dependencies{
-    compile 'com.superluo:textbannerview:1.0.3'  //最新版本
+    compile 'com.superluo:textbannerview:1.0.4'  //最新版本
 }
 ```
 或者引用本地lib
@@ -53,7 +55,7 @@ Maven
 <dependency>
   <groupId>com.superluo</groupId>
   <artifactId>textbannerview</artifactId>
-  <version>1.0.3</version>
+  <version>1.0.4</version>
   <type>pom</type>
 </dependency>
 ```
@@ -133,8 +135,16 @@ protected void onStop() {
 ```
 * <a href="#2">点击可参考更多使用方法</a>
 
+#### Step 5.更多详情请下载并参考项目demo
+
+
+<br><br><br>
 ## 版本历史：
-###  v1.0.3 (2018/7/23)
+###  v1.0.4 (2018/10/05)
+* 新增文字下划线、中划线设置；
+* 新增文字样式类型设置，如字体加粗、下划线、下划线加粗。
+
+### v1.0.3 (2018/7/23)
 * 修复用带图的setDatasWithDrawableIcon方法后，布局文件里设置setGravity=left等位置时不起作用问题；
 * 添加文字重影问题的方法使用说明；
 * 项目工程升级为AndroidStudio3.1.3。
