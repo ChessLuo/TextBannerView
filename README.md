@@ -21,8 +21,8 @@
 |setSingleLine| boolean|是否为显示单行
 |setGravity| |文字显示位置,默认左边居中；可设置left、center、right
 |setDirection| |文字轮播方向，默认水平从右到左轮播：right_to_left；还可以设置left_to_right（从左到右轮播）、bottom_to_top（从底部到顶部轮播）、top_to_bottom（从顶部到底部轮播）
-|setFlags| |添加文字下划线、中划线。默认没有划线；可设置underline(下划线)、strike(中划线)。支持版本：v1.0.4开始
-|setTypeface| |设置字体样式类型，如加粗、斜体、斜体加粗。默认为普通类型；可设置bold(加粗)、italic(斜体)、italic_bold(斜体加粗)。支持版本：v1.0.4开始
+|setFlags| |添加文字下划线、中划线。默认没有划线；可设置underline(下划线)、strike(中划线)。<br>支持版本：v1.0.4开始
+|setTypeface| |设置字体样式类型，如加粗、斜体、斜体加粗。默认为普通类型；可设置bold(加粗)、italic(斜体)、italic_bold(斜体加粗)。<br>支持版本：v1.0.4开始
 
 
 ## <a name="2"></a>方法
@@ -42,7 +42,7 @@
 Gradle 
 ```groovy
 dependencies{
-    compile 'com.superluo:textbannerview:1.0.4'  //最新版本
+    compile 'com.superluo:textbannerview:1.0.5'  //最新版本
 }
 ```
 或者引用本地lib
@@ -55,7 +55,7 @@ Maven
 <dependency>
   <groupId>com.superluo</groupId>
   <artifactId>textbannerview</artifactId>
-  <version>1.0.4</version>
+  <version>1.0.5</version>
   <type>pom</type>
 </dependency>
 ```
@@ -140,15 +140,15 @@ protected void onStop() {
 
 <br><br><br>
 ## 版本历史：
-<<<<<<< HEAD
+###  v1.0.5 (2018/10/11)
+* 修复广告文字出现锯齿导致不清晰或失真问题；
+* 在上版本添加了字体划线等功能后，取消划线时忘了添加抗锯齿了，感谢大家提了问题。
+
 ###  v1.0.4 (2018/10/05)
 * 新增文字下划线、中划线设置；
-* 新增文字样式类型设置，如字体加粗、下划线、下划线加粗。
+* 新增文字样式类型设置，如字体加粗、斜体、斜体加粗。
 
 ### v1.0.3 (2018/7/23)
-=======
-###  v1.0.3 (2018/7/28)
->>>>>>> 7016f558a2a46ef7f7ae1934a3926b55efb095fe
 * 修复用带图的setDatasWithDrawableIcon方法后，布局文件里设置setGravity=left等位置时不起作用问题；
 * 添加文字重影问题的方法使用说明；
 * 项目工程升级为AndroidStudio3.1.3。
@@ -165,7 +165,7 @@ protected void onStop() {
 
 
 
-## 更多开源库请关注：[GitHubNotes](https://github.com/zsml2016/GitHubNotes)
+## 更多开源库请关注：[GitHub](https://github.com/zsml2016)
 
 
 
